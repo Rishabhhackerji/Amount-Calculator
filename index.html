@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Calculator </title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <nav class="navBar">
+        <div class="logo">NoteC</div>
+        <ul>
+            <li><a href="Profit Calculator\index.html">Profit Calculator</a></li>
+            <li><a href="#">Calculator</a></li>
+            <li><a href="#">Sale</a></li>
+            <li><a href="#">Purchase</a></li>
+        </ul>
+    </nav>
+    <!-- <div class="tp"> -->
+    <main>
+        <section class="main_Cal">
+            <div class="cal">
+                <h2>Money Calculator</h2>
+
+                <div>
+                    <label for="#">500</label>
+                    <input type="number" name="" id="five" class="Numu0">
+                </div>
+
+                <div>
+                    <label for="#">200</label>
+                    <input type="number" name="" id="two" class="Numu1">
+                </div>
+                <div>
+                    <label for="#">100</label>
+                    <input type="number" name="" id="hundred" class="Numu2">
+                </div>
+                <div>
+                    <label for="#">50</label>
+                    <input type="number" name="" id="fifty" class="Numu3">
+                </div>
+                <div class="buttons">
+                    <button class="Calc" id="calc">Calculate</button>
+                    <button class="Clear" id="clear">Clear</button>
+                </div>
+                <div class="Ans">
+                    <div>Answer:</div>
+                    <div class="Answer" id="Answer"></div>
+                </div>
+            </div>
+
+        </section>
+        <section id="noteC_Add">
+            <input type="number" class="add_Field" id="add_Field">
+            <button id="addd">+Add</button>
+            <button id="minus">-Subs</button>
+        </section>
+    </main>
+    <!-- </div> -->
+</body>
+<script>
+    // ---------------DATE-----------------
+
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+    const formattedDate = currentDate.toLocaleDateString(undefined, options);
+    console.log(`Today's date is ${formattedDate}`);
+
+    // ---------------DATE-----------------
+
+    document.getElementById("five").oninput = (() => {
+        let val = document.getElementById("five").value;
+        val = val.toString();
+        console.log(val);
+    })
+</script>
+
+</script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyB_hJE-RhhIKgppNtLvFZIVKjf055f0FUE",
+        authDomain: "notec-4b130.firebaseapp.com",
+        projectId: "notec-4b130",
+        storageBucket: "notec-4b130.appspot.com",
+        messagingSenderId: "534040232391",
+        appId: "1:534040232391:web:0565eaeb1616a52e9419e2"
+    };
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    //get ref to database services
+    const db = getDatabase(app);
+
+    document.getElementById("calc").addEventListener('click', function (e) {
+        e.preventDefault();
+        set(ref(db, `${formattedDate}/Count`),
+            {
+
+                Five: document.getElementById("five").value,
+                Two: document.getElementById("two").value,
+                One: document.getElementById("hundred").value,
+                fifty: document.getElementById("fifty").value,
+                //  Space:"---------",
+                TotalMoney: TotalMoney
+
+            });
+        alert("Data Sent successfully !");
+    })
+</script>
+<script src="index.js"></script>
+
+</html>
